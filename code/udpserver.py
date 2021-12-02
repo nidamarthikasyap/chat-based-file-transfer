@@ -156,7 +156,7 @@ class UDPServer(object):
         msg = self.udp_recv()
         msg = msg.split('|')
       if msg[1][:3] != 'ACK': 
-        print "Non ACK non NACK"
+        print ("Non ACK non NACK")
         self.suspended = True
       
       #print "bef rec %s" %self.window
@@ -193,7 +193,7 @@ class UDPServer(object):
       return
     empty_tuple = ()
     thread.start_new_thread(self.send_file, empty_tuple)
-    print "created a thread"
+    print ("created a thread")
     thread.start_new_thread(self.rec_ack, empty_tuple)
 
   def send_pkt(self, send_msg, tries=10):
@@ -208,5 +208,5 @@ class UDPServer(object):
       self.udp_send(send_msg)
       msg = self.udp_recv()
     if msg[:3] != 'ACK':
-      print "Non ACK non NACK"
+      print ("Non ACK non NACK")
       self.suspended = True
